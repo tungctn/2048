@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1620036118 source:d:\c++\2048\_sdl.cpp
+	"_sdl.h"
+
+1620036129 d:\c++\2048\_sdl.h
+	"color.h"
+	<iostream>
+	<time.h>
+	<random>
+	<string>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1620033689 d:\c++\2048\color.h
+	<SDL.h>
+
+1620051672 source:d:\c++\2048\game2048.cpp
+	"Game2048.h"
+
+1620033589 d:\c++\2048\game2048.hpp
+
+1620033804 d:\c++\2048\text.h
+	"_sdl.h"
+
+1620051680 source:d:\c++\2048\main.cpp
+	"Game2048.h"
+
+1620033804 source:d:\c++\2048\text.cpp
+	"text.h"
+
+1620033990 d:\c++\2048\game2048.h
+	"text.h"
+
