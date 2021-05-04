@@ -173,8 +173,10 @@ void Size()
      SDL_RenderCopy(renderer,menu,nullptr,nullptr);
      SDL_Rect filled_rect;
      SDL_RenderPresent(renderer);
+    show( renderer, "3 x 3" , WHITE_COLOR, width / 2 - 5 *30 / 2, height / 2 - 200, 30 * 5, 100, 40);
     show( renderer, "4 x 4" , WHITE_COLOR, width / 2 - 5 *30 / 2, height / 2 - 100, 30 * 5, 100, 40);
     show( renderer, "5 x 5" , WHITE_COLOR, width / 2 - 5 *30 / 2, height / 2 , 30 * 5, 100, 40);
+    //show( renderer, "6 x 6" , WHITE_COLOR, width / 2 - 5 *30 / 2, height / 2 + 100, 30 * 5, 100, 40);
     SDL_RenderPresent( renderer) ;
 
     SDL_Event e;
@@ -189,8 +191,10 @@ void Size()
                 int x = e.button.x;
                 int y = e.button.y;
 
-                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 - 50, 30 * 5, 100) ) { game2048.Size = 4; return; }
-                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 + 50, 30 * 5, 100) ) { game2048.Size = 5; return; }
+                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 - 200, 30 * 5, 100) ) { game2048.Size = 3; return; }
+                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 - 100, 30 * 5, 100) ) { game2048.Size = 4; return; }
+                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 , 30 * 5, 100) ) { game2048.Size = 5; return; }
+                //if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 + 100, 30 * 5, 100) ) { game2048.Size = 6; return; }
             }
         }
     }
@@ -204,7 +208,7 @@ int main(int argc, char* argv[])
 
     srand(time(NULL));
     initSDL( window, renderer);
-    SDL_Texture * texture;
+    //SDL_Texture * texture;
     Mix_Music* mus;
     Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
     mus = Mix_LoadMUS(MUS.c_str());

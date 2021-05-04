@@ -143,8 +143,12 @@ void Game2048::init()
 {
     for( int i = 0; i < Size; i++)
         for( int j = 0; j < Size; j++)   arr[i][j] = 0;
-    random();
-    random();
+//    random();
+//    random();
+//    random();
+      if(Size == 3) {random();random();random();random();random();}
+      else if(Size == 4) {random();random();random();random();random();random();random();random();}
+      else {random();random();random();random();random();random();random();random();random();random();}
 }
 
 void Game2048::render(SDL_Renderer* renderer)
