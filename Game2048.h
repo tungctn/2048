@@ -15,7 +15,9 @@ struct Game2048{
 
     void render(SDL_Renderer* );
 
-    int arr[4][4];
+    int arr[10][10];
+    int Size = 4;
+    //vector<vector<>>
     bool isRandom = true;
 };
 

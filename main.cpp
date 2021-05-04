@@ -9,6 +9,8 @@ SDL_Texture* menu = nullptr;
 SDL_Surface* bkgSurface = NULL;
 SDL_Texture* bkg = nullptr;
 
+SDL_Surface* gameoverSurface = NULL;
+SDL_Texture* go = nullptr;
 
 
 SDL_Surface* winSurface = NULL;
@@ -43,45 +45,11 @@ bool Again()
     }
 }
 
-int Continue()
-{
-    SDL_Event e;
-    while( true )
-    {
-        while( SDL_PollEvent( &e ) )
-        {
-            if(e.type == SDL_QUIT) return 0;
+int Continue();
 
-            if( e.type == SDL_MOUSEBUTTONDOWN )
-            {
-                int x = e.button.x;
-                int y = e.button.y;
-                if( check_mouse(x, y, 210, 200, 270, 50) ) return 2;
-                if( check_mouse(x, y, 180, 275, 240, 50) ) return 1;
-                if( check_mouse(x, y, 240, 350, 240, 50) ) return 0;
-            }
-        }
-    }
-}
 
-void gameOver()
-{
+void gameOver();
 
-    //setColor( renderer, BLACK_COLOR );
-    //SDL_RenderClear( renderer );
-    bkgSurface = IMG_Load("thien-ha-700x466.jpg");
-    bkg = SDL_CreateTextureFromSurface(renderer,bkgSurface);
-    SDL_FreeSurface(bkgSurface);
-    SDL_SetRenderDrawColor(renderer,0,0,0,0);
-    //SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer,bkg,nullptr,nullptr);
-    SDL_Rect filled_rect;
-    SDL_RenderPresent(renderer);
-    show( renderer, "GAME OVER", WHITE_COLOR, 165, 125, 270, 50, 60);
-    show( renderer, "NEW GAME", WHITE_COLOR, 180, 200, 240, 50, 60);
-    show( renderer, "EXIT", WHITE_COLOR, 240, 275, 120, 50, 60);
-    SDL_RenderPresent( renderer );
-}
 
 
 
@@ -105,14 +73,7 @@ void gameWin()
 
 bool PlayGame()
 {
-//    bkgSurface = IMG_Load("thien-ha-700x466.jpg");
-//    bkg = SDL_CreateTextureFromSurface(renderer,bkgSurface);
-//    SDL_FreeSurface(bkgSurface);
-//    SDL_SetRenderDrawColor(renderer,0,0,0,0);
-//    SDL_RenderClear(renderer);
-//    SDL_RenderCopy(renderer,bkg,nullptr,nullptr);
-//    SDL_Rect filled_rect;
-    //SDL_RenderPresent(renderer);
+
     game2048.init();
     SDL_Event e;
     game2048.render(renderer);
@@ -176,9 +137,9 @@ bool start()
     SDL_FreeSurface(menuSurface);
     SDL_SetRenderDrawColor(renderer,0,0,0,0);
      //SDL_RenderClear(renderer);
-     SDL_RenderCopy(renderer,menu,nullptr,nullptr);
-     SDL_Rect filled_rect;
-     SDL_RenderPresent(renderer);
+    SDL_RenderCopy(renderer,menu,nullptr,nullptr);
+    SDL_Rect filled_rect;
+    SDL_RenderPresent(renderer);
      //SDL_Delay(1);
     show( renderer, "NEW GAME", WHITE_COLOR, 180, 240, 240, 50, 60);
     show( renderer, "EXIT", WHITE_COLOR, 240, 315, 120, 50, 60);
@@ -201,6 +162,41 @@ bool start()
     }
 }
 
+void Size()
+{
+
+    menuSurface = IMG_Load("background_01.jpg");
+    menu = SDL_CreateTextureFromSurface(renderer,menuSurface);
+    SDL_FreeSurface(menuSurface);
+    SDL_SetRenderDrawColor(renderer,0,0,0,0);
+     //SDL_RenderClear(renderer);
+     SDL_RenderCopy(renderer,menu,nullptr,nullptr);
+     SDL_Rect filled_rect;
+     SDL_RenderPresent(renderer);
+    show( renderer, "4 x 4" , WHITE_COLOR, width / 2 - 5 *30 / 2, height / 2 - 100, 30 * 5, 100, 40);
+    show( renderer, "5 x 5" , WHITE_COLOR, width / 2 - 5 *30 / 2, height / 2 , 30 * 5, 100, 40);
+    SDL_RenderPresent( renderer) ;
+
+    SDL_Event e;
+    while( true )
+    {
+        while( SDL_PollEvent( &e ) )
+        {
+            if(e.type == SDL_QUIT) return;
+
+            if( e.type == SDL_MOUSEBUTTONDOWN )
+            {
+                int x = e.button.x;
+                int y = e.button.y;
+
+                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 - 50, 30 * 5, 100) ) { game2048.Size = 4; return; }
+                if( check_mouse(x, y, width / 2 - 5 *30 / 2, height / 2 + 50, 30 * 5, 100) ) { game2048.Size = 5; return; }
+            }
+        }
+    }
+
+}
+
 int main(int argc, char* argv[])
 {
 
@@ -217,7 +213,15 @@ int main(int argc, char* argv[])
     if(!start()) return 0;
 
     do {
-
+         Size();
+         gameoverSurface = IMG_Load("thien-ha-700x466.jpg");
+    go = SDL_CreateTextureFromSurface(renderer,gameoverSurface);
+    SDL_FreeSurface(gameoverSurface);
+    //SDL_SetRenderDrawColor(renderer,0,0,0,0);
+    //SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer,go,nullptr,nullptr);
+    SDL_Rect filled_rect;
+    SDL_RenderPresent(renderer);
         if( !PlayGame() ) return 0;
 
         if( Again() == false ) return 0;
@@ -230,14 +234,42 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-//void draw(SDL_Renderer*&renderer)
-//{
-//    bkgSurface = IMG_Load("thien-ha-700x466.jpg");
-//    bkg = SDL_CreateTextureFromSurface(renderer,bkgSurface);
-//    SDL_FreeSurface(bkgSurface);
-//    SDL_SetRenderDrawColor(renderer,0,0,0,0);
-//    SDL_RenderClear(renderer);
-//    SDL_RenderCopy(renderer,bkg,nullptr,nullptr);
-//    SDL_Rect filled_rect;
-//    SDL_RenderPresent(renderer);
-//}
+int Continue()
+{
+    SDL_Event e;
+    while( true )
+    {
+        while( SDL_PollEvent( &e ) )
+        {
+            if(e.type == SDL_QUIT) return 0;
+
+            if( e.type == SDL_MOUSEBUTTONDOWN )
+            {
+                int x = e.button.x;
+                int y = e.button.y;
+                if( check_mouse(x, y, 210, 200, 270, 50) ) return 2;
+                if( check_mouse(x, y, 180, 275, 240, 50) ) return 1;
+                if( check_mouse(x, y, 240, 350, 240, 50) ) return 0;
+            }
+        }
+    }
+}
+
+void gameOver()
+{
+
+    //setColor( renderer, BLACK_COLOR );
+    //SDL_RenderClear( renderer );
+    bkgSurface = IMG_Load("thien-ha-700x466.jpg");
+    bkg = SDL_CreateTextureFromSurface(renderer,bkgSurface);
+    SDL_FreeSurface(bkgSurface);
+    SDL_SetRenderDrawColor(renderer,0,0,0,0);
+    //SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer,bkg,nullptr,nullptr);
+    SDL_Rect filled_rect;
+    SDL_RenderPresent(renderer);
+    show( renderer, "GAME OVER", WHITE_COLOR, 165, 125, 270, 50, 60);
+    show( renderer, "NEW GAME", WHITE_COLOR, 180, 200, 240, 50, 60);
+    show( renderer, "EXIT", WHITE_COLOR, 240, 275, 120, 50, 60);
+    SDL_RenderPresent( renderer );
+}

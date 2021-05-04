@@ -15,7 +15,7 @@
 1620033689 d:\c++\2048\color.h
 	<SDL.h>
 
-1620051672 source:d:\c++\2048\game2048.cpp
+1620122248 source:d:\c++\2048\game2048.cpp
 	"Game2048.h"
 
 1620033589 d:\c++\2048\game2048.hpp
@@ -23,12 +23,12 @@
 1620033804 d:\c++\2048\text.h
 	"_sdl.h"
 
-1620051680 source:d:\c++\2048\main.cpp
+1620122775 source:d:\c++\2048\main.cpp
 	"Game2048.h"
 
 1620033804 source:d:\c++\2048\text.cpp
 	"text.h"
 
-1620033990 d:\c++\2048\game2048.h
+1620122435 d:\c++\2048\game2048.h
 	"text.h"
 
