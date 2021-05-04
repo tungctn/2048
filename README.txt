@@ -1,25 +1,18 @@
-
-This library is a wrapper around the excellent FreeType 2.0 library,
-available at:
-	http://www.freetype.org/
-
-This library allows you to use TrueType fonts to render text in SDL
-applications.
-
-To make the library, first install the FreeType library, then type
-'./configure' then 'make' to build the SDL truetype library and the
-showfont and glfont example applications.
-
-Be careful when including fonts with your application, as many of them
-are copyrighted.  The Microsoft fonts, for example, are not freely 
-redistributable and even the free "web" fonts they provide are only 
-redistributable in their special executable installer form (May 1998).
-There are plenty of freeware and shareware fonts available on the Internet
-though, and may suit your purposes.
-
-This library is under the zlib license, see the file "COPYING.txt" for details.
-
-Portions of this software are copyright © 2013 The FreeType Project (www.freetype.org).  All rights reserved.
-
-Enjoy!
-	-Sam Lantinga <slouken@libsdl.org>		(6/20/2001)
+Nguyễn Thanh Tùng _ 20020220_K65J
+Game: 2048
+Các tính năng của game: 
+	Chơi như game 2048 thông thường
+	Không có tính điểm
+	Chơi đến 2048 thì win
+	Có chơi lại
+	Có âm thanh (nhạc nền)
+	Có menu
+	Có độ khó (3x3,4x4,5x5)
+	Có sự kiện chuột bàn phím
+	Hình ảnh (tự tìm trên google)
+	Có phân ra file.cpp và file.h
+Tham khảo:
+	Logic game: hỏi bạn bè
+	SDL thì học tại: https://lazyfoo.net/tutorials/SDL/, https://phattrienphanmem123az.com/lap-trinh-game-cpp
+Còn lại menu, kiểm tra thắng thua, show ảnh, show text, di chuyển , random, đồ họa đều do e làm.
+E nghĩ mình được khoảng 8-9đ. 
