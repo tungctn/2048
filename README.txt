@@ -14,5 +14,5 @@ Các tính năng của game:
 Tham khảo:
 	Logic game: hỏi bạn bè
 	SDL thì học tại: https://lazyfoo.net/tutorials/SDL/, https://phattrienphanmem123az.com/lap-trinh-game-cpp
-Còn lại menu, kiểm tra thắng thua, show ảnh, show text, di chuyển , random, đồ họa đều do e làm.
+Còn lại menu, kiểm tra thắng thua, show ảnh, show text, âm thanh, di chuyển , random, đồ họa đều do e làm.
 E nghĩ mình được khoảng 8-9đ. 
